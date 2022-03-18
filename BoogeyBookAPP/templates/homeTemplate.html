@@ -3,13 +3,16 @@ Aquí va la programació del HTML de la pàgina web
 {% endcomment %}
 
 
-
-<html>
+{% block content %}
+    <html>
     <body>
-        <h2 style="color: red;">
-            BoogeyBook app!
-        </h2>
+    <h2 style="color: red;">
+        BoogeyBook app!
+    </h2>
     </body>
     <p>En aquesta part crearem un formulari per autenticar l'usuari</p>
-</html>
+    </html>
+
+{% endblock %}
+
 
