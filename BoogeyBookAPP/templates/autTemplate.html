@@ -2,16 +2,12 @@
 Aquí va la programació del HTML de la pàgina web
 {% endcomment %}
 
-
 {% block content %}
-    <html>
-    <body>
-    <h2 style="color: red;">
-        Autentication phase:
-    </h2>
-    </body>
-    <p>En aquesta part crearem un formulari per autenticar l'usuari</p>
-    </html>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form }}
+
+    </form>
 
 {% endblock %}
 
