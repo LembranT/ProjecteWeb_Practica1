@@ -3,14 +3,25 @@ from django.db import models
 
 # Create your models here.
 class Reader(models.Model):
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=50)
-    username = models.CharField(max_length=40)
-    mail = models.EmailField()
-    password = models.CharField(max_length=150)
+    reader_id = models.AutoField(primary_key=True)
+    username = models.CharField(max_length=20)
+    password = models.CharField(max_length=50)
 
 
-class Books(models.Model):
-    #idBook = models.IntegerField()     #Es necessita cridar a la api de google.
+class Author(models.Model):
+    author_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20)
-    review = models.CharField(max_length=1000)
+
+
+class Genre(models.Model):
+    genre_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=20)
+
+
+class Book(models.Model):
+    book_id = models.AutoField(primary_key=True)
+    ISBN = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    genre = models.ManyToManyField(Genre)
+    release_date = models.DateField()
