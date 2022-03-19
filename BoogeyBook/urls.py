@@ -19,6 +19,6 @@ from BoogeyBook.views import home   #importar la vista creada
 from BoogeyBookAPP.views import VRegister
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home),
+    path('', home),
     path('autentication/', VRegister.as_view()),
 ]
