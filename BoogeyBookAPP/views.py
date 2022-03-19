@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from BoogeyBookAPP.models import Book
 
 # Create your views here.
 
@@ -19,3 +20,19 @@ class VRegister(View):
 
 def home(request):
     return render(request, "homeTemplate.html")
+
+def search(request):
+
+    if request.GET["data"]:
+        #message="Book searched: %r" %request.GET["data"]
+        book=request.GET["data"]
+
+        books=Book.objects.filter(name__icontains=book)
+
+        return render(request, "results.html", {"books":books, "query":book})
+
+    else:
+        message="You just entered nothing."
+
+
+    return HttpResponse(message)
