@@ -18,12 +18,12 @@ class VRegister(View):
 
     def post(self, request):
         form = UserCreationForm(request.POST)
-        if (form.is_valid):
-            user = form.save()  #on es guarda?
-            login(request, user)   
+        if form.is_valid():
+            user = form.save()  # guardat a auth_user
+            login(request, user)
             return render(request, "homeTemplate.html")
         else:
-            pass
+            return render(request, "autTemplate.html", {"form": form})
 
     def login(request):
         return render(request, "loginTemplate.html")
