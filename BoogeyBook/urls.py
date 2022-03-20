@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+import BoogeyBookAPP.views
 from BoogeyBook.views import home   #importar la vista creada
 from BoogeyBookAPP.views import VRegister
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
     path('autentication/', VRegister.as_view()),
+    path('login/', VRegister.login),
 ]

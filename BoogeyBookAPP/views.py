@@ -22,6 +22,9 @@ class VRegister(View):
         login(request, user)
         return redirect('Home')
 
+    def login(request):
+        return render(request, "loginTemplate.html")
+
 
 def home(request):
     return render(request, "homeTemplate.html")
