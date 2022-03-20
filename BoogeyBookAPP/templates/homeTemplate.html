@@ -17,6 +17,10 @@ Aquí va la programació del HTML de la pàgina web
             <title>BogeyBook</title>
         </head>
         <body>
+            <form action="/logout/" method="post" style="float: right">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
             <h2 style="color: red;">
                 BoogeyBook app!
             </h2>

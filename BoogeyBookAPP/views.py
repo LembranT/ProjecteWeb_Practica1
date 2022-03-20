@@ -8,7 +8,7 @@ from BoogeyBookAPP.models import Book
 from django.views.generic import View
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 def singup_view(request):
     if request.method == 'POST':
@@ -35,6 +35,11 @@ def login_view(request):
         form = AuthenticationForm()
 
     return render(request, "loginTemplate.html", {"form": form})
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('home')
 
 def home(request):
     return render(request, "homeTemplate.html")
