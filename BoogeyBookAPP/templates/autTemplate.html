@@ -1,8 +1,8 @@
 {% comment %}
 Aquí va la programació del HTML de la pàgina web
 {% endcomment %}
-{% load crispy_forms_tags %}
 
+{% load crispy_forms_tags %}
 {% block content %}
     <form method="post" action="">
         {% csrf_token %}
@@ -16,7 +16,6 @@ Aquí va la programació del HTML de la pàgina web
             <div style="margin-left: 200px;">
                 <button type="submit" class="btn btn-success">Join our readers community</button>
             </div>
-
         </div>
     </form>
 {% endblock %}

@@ -18,9 +18,12 @@ class VRegister(View):
 
     def post(self, request):
         form = UserCreationForm(request.POST)
-        user = form.save()
-        login(request, user)
-        return redirect('Home')
+        if (form.is_valid):
+            user = form.save()  #on es guarda?
+            login(request, user)   
+            return render(request, "homeTemplate.html")
+        else:
+            pass
 
     def login(request):
         return render(request, "loginTemplate.html")

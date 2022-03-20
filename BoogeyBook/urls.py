@@ -24,4 +24,6 @@ urlpatterns = [
     path('', home),
     path('autentication/', VRegister.as_view()),
     path('login/', VRegister.login),
+    path('home/', home)
+
 ]
