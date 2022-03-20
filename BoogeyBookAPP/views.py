@@ -9,6 +9,7 @@ from django.views.generic import View
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 
 def singup_view(request):
     if request.method == 'POST':
@@ -30,6 +31,8 @@ def login_view(request):
             #login user
             user = form.get_user()
             login(request, user)
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
             return redirect("home")
     else:
         form = AuthenticationForm()
@@ -40,6 +43,10 @@ def logout_view(request):
     if request.method == 'POST':
         logout(request)
         return redirect('home')
+
+@login_required(login_url='/login/')
+def results_view(request):
+    return render(request, 'results.html')
 
 def home(request):
     return render(request, "homeTemplate.html")

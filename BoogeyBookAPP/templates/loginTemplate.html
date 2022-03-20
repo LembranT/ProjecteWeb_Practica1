@@ -3,6 +3,9 @@
     <form action="/login/" method="post">
         {% csrf_token %}
         {{form}}
+        {% if request.GET.next %}
+            <button hidden="hidden" name="next" value="{{request.GET.next}}"></button>
+        {% endif %}
         <button type="submit">Login</button>
     </form>
 {% endblock %}
