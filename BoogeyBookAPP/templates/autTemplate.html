@@ -4,7 +4,11 @@ Aquí va la programació del HTML de la pàgina web
 
 {% load crispy_forms_tags %}
 {% block content %}
-    <form method="post" action="">
+    <head>
+        <meta charset="UTF-8">
+        <title>Autentication</title>
+    </head>
+    <form action="/autentication/" method="post">
         {% csrf_token %}
         <div style="font-family:Arial, Helvetica, sans-serif; font-size: 30px; font-weight:bold;
         margin-left: 700px; margin-top: 50px">
@@ -14,7 +18,7 @@ Aquí va la programació del HTML de la pàgina web
             {{ form|crispy }}
             <br><br>
             <div style="margin-left: 200px;">
-                <button type="submit" class="btn btn-success">Join our readers community</button>
+                <button type="submit">Join our readers community</button>
             </div>
         </div>
     </form>

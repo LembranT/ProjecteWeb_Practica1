@@ -18,12 +18,12 @@ from django.urls import path, include
 
 import BoogeyBookAPP.views
 from BoogeyBook.views import home   #importar la vista creada
-from BoogeyBookAPP.views import VRegister
+from BoogeyBookAPP import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home),
-    path('autentication/', VRegister.as_view()),
-    path('login/', VRegister.login),
+    path('', home, name="home"),
+    path('autentication/', views.singup_view),
+    path('login/', views.login_view, name="login"),
     path('home/', home)
 
 ]

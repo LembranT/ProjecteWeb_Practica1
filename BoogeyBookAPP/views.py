@@ -7,16 +7,11 @@ from BoogeyBookAPP.models import Book
 # Autentication and register
 from django.views.generic import View
 
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login
 
-
-class VRegister(View):
-    def get(self, request):
-        form = UserCreationForm()
-        return render(request, "autTemplate.html", {"form": form})
-
-    def post(self, request):
+def singup_view(request):
+    if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()  # guardat a auth_user
@@ -24,10 +19,22 @@ class VRegister(View):
             return render(request, "homeTemplate.html")
         else:
             return render(request, "autTemplate.html", {"form": form})
+    else:
+        form = UserCreationForm
+        return render(request, "autTemplate.html", {"form": form})
 
-    def login(request):
-        return render(request, "loginTemplate.html")
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            #login user
+            user = form.get_user()
+            login(request, user)
+            return redirect("home")
+    else:
+        form = AuthenticationForm()
 
+    return render(request, "loginTemplate.html", {"form": form})
 
 def home(request):
     return render(request, "homeTemplate.html")

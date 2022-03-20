@@ -5,22 +5,35 @@ Aquí va la programació del HTML de la pàgina web
 
 {% block content %}
     <html>
-    <body>
-    <h2 style="color: red;">
-        BoogeyBook app!
-    </h2>
+        <style>
+            .btn{
+                float: left;
+                margin-right: 10px
+            }
 
-    <form action="/search/" method="GET">
-        <input type="text" name="data">
-        <input type="submit" value="Search">
-    </form>
-    <form action="/autentication/" method="GET">
-        <button id="register" class="btn">Register</button>
-    </form>
-    <form action="/login/" method="GET">
-        <button id="login" class="btn">Login</button>
-    </form>
-    </body>
+        </style>
+        <head>
+            <meta charset="UTF-8">
+            <title>BogeyBook</title>
+        </head>
+        <body>
+            <h2 style="color: red;">
+                BoogeyBook app!
+            </h2>
+            <form action="/search/" method="GET">
+                <input type="text" name="data">
+                <input type="submit" value="Search">
+            </form>
+            <div>
+                <form class="btn" action="/autentication/" method="GET">
+                    <button>Register</button>
+                </form>
+                <form class="btn" action="/login/" method="GET">
+                    <button>Login</button>
+                </form>
+            </div>
+
+        </body>
     </html>
 
 {% endblock %}
