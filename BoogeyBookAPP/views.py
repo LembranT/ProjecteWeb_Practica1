@@ -44,15 +44,11 @@ def logout_view(request):
         logout(request)
         return redirect('home')
 
-@login_required(login_url='/login/')
-def results_view(request):
-    return render(request, 'results.html')
-
 def home(request):
     return render(request, "homeTemplate.html")
 
-
-def search(request):
+@login_required(login_url='/login/')
+def search_view(request):
     if request.GET["data"]:
         # message="Book searched: %r" %request.GET["data"]
         book = request.GET["data"]

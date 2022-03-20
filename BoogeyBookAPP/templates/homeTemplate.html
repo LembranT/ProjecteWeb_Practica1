@@ -17,10 +17,6 @@ Aquí va la programació del HTML de la pàgina web
             <title>BogeyBook</title>
         </head>
         <body>
-            <form action="/logout/" method="post" style="float: right">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form>
             <h2 style="color: red;">
                 BoogeyBook app!
             </h2>
@@ -29,12 +25,19 @@ Aquí va la programació del HTML de la pàgina web
                 <input type="submit" value="Search">
             </form>
             <div>
-                <form class="btn" action="/autentication/" method="GET">
-                    <button>Register</button>
-                </form>
-                <form class="btn" action="/login/" method="GET">
-                    <button>Login</button>
-                </form>
+                {% if user.is_authenticated %}
+                    <form class="btn" action="/logout/" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                {% else %}
+                    <form class="btn" action="/login/" method="GET">
+                        <button>Login</button>
+                    </form>
+                    <form class="btn" action="/autentication/" method="GET">
+                        <button>Register</button>
+                    </form>
+                {% endif %}
             </div>
 
         </body>
